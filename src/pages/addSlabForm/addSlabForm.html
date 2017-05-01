@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+  <ion-item class="text" *ngFor="let item of items | async">
+    {{item.title}}
+  </ion-item>
+  </ion-list>
+
+ <form #slab="ngForm" (ngSubmit)="addSlab(slab)" novalidate>
+
+  <ion-item>
+    <ion-label  color="primary" floating>Title</ion-label>
+    <ion-input type="text" [(ngModel)]="slab.title" name="title"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label  color="primary"  floating>Description</ion-label>
+    <ion-input type="text" [(ngModel)]="slab.description" name="description"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label  color="primary" floating>Image</ion-label>
+    <ion-input type="text" [(ngModel)]="slab.img_url" name="img_url"></ion-input>
+  </ion-item>
+  <button  class='lower' type="submit" ion-button full>Add</button>
+</form>
+
+</ion-content>

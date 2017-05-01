@@ -4,4 +4,5 @@ export class Post {
     title: string;
     content: string;
     upvotes: number;
+    color: string;
 }

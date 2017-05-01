@@ -1,14 +1,34 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>City Board</ion-title>
+    <ion-title>CitySlab</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="cards-bg">
 
- <ion-card *ngFor="let post of posts">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
-  <ion-item>
+ <ion-row *ngIf='loading' justify-content-center>
+  <ion-col col-auto>
+    <ion-spinner  color="royal" name="crescent"></ion-spinner>
+  </ion-col>
+ </ion-row>
+
+
+  <ion-fab right bottom>
+    <button ion-fab mini color="light"><ion-icon name="add"></ion-icon></button>
+    <ion-fab-list side="top">
+      <button ion-fab color="danger"><ion-icon name="hammer"></ion-icon></button>
+      <button ion-fab><ion-icon name="heart"></ion-icon></button>
+      <button ion-fab><ion-icon name="infinite"></ion-icon></button>
+      <button ion-fab><ion-icon name="musical-notes"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+
+ <ion-card *ngFor="let slab of slabs | async" (click)=loadSinglePost(slab.$key)>
+  <ion-item color="{{slab.color}}">
     <ion-avatar item-left>
       <img src="https://upload.wikimedia.org/wikipedia/en/d/d8/Michael_J._Fox_as_Marty_McFly_in_Back_to_the_Future%2C_1985.jpg">
     </ion-avatar>
@@ -16,13 +36,20 @@
     <p>November 5, 1955</p>
   </ion-item>
 
-    <img src="{{post.img_url}}"/>
+    <img src="{{slab.img_url}}"/>
+
+    <ion-fab right top>
+      <button ion-fab mini>
+        <ion-icon name="pin"></ion-icon>
+      </button>
+    </ion-fab>
+
     <ion-card-content>
-      <ion-card-title>
-       {{post.title}}
+      <ion-card-title color="{{slab.color}}">
+       {{slab.title}}   <ion-icon padding-horizontal name="arrow-forward"></ion-icon>
       </ion-card-title>
       <p>
-        {{post.content}}
+        {{slab.description}}
       </p>
     </ion-card-content>
 
@@ -30,7 +57,7 @@
       <ion-col>
         <button ion-button clear small color="danger" icon-left>
           <ion-icon name='star'></ion-icon>
-          {{post.upvotes}}
+          {{slab.voteCount}}
         </button>
       </ion-col>
       <ion-col text-center>
@@ -51,3 +78,5 @@
 
 
 </ion-content>
+
+
