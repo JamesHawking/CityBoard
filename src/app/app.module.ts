@@ -18,6 +18,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { PostService } from './post/post.service';
 import { AuthService } from '../providers/auth-service';
 
+ import { GoogleMaps } from '@ionic-native/google-maps';
+ import { Geolocation } from '@ionic-native/geolocation';
+
+ import { CustomIconsModule } from 'ionic2-custom-icons';
+
 export const firebaseConfig = {
   apiKey: "AIzaSyCYSOZSBgcFZQLkEm9YwgJCcBu2nV61fKM",
   authDomain: "cityboard-31d6b.firebaseapp.com",
@@ -37,6 +42,7 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    CustomIconsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     PostModule
   ],
@@ -52,6 +58,8 @@ export const firebaseConfig = {
     StatusBar,
     PostService,
     AuthService,
+    GoogleMaps,
+    Geolocation,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>post</ion-title>
+    <ion-title>{{item.title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -25,17 +25,13 @@
   </ion-item>
 
     <img src="{{item.img_url}}"/>
-     <ion-fab right top>
-    <button ion-fab>
-      <ion-icon name="pin"></ion-icon>
-      </button>
-    </ion-fab>
+
     <ion-card-content>
       <ion-card-title color="{{item.color}}">
        {{item.title}}
       </ion-card-title>
       <p>
-        {{item.content}}
+        {{item.description}}
       </p>
     </ion-card-content>
 
@@ -59,7 +55,11 @@
         </button>
       </ion-col>
     </ion-row>
-
   </ion-card>
+
+
+
+<div #map id="map">
+  </div>  
 
 </ion-content>

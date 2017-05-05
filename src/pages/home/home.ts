@@ -24,9 +24,6 @@ export class HomePage implements OnInit {
      this.slabs = af.database.list('/slabs');
 
     // this.slabs.subscribe(slabs => JSON.parse(slabs))
-    if (this.slabs) {
-      this.loading = false
-    }
   }
 
   doRefresh(refresher) {

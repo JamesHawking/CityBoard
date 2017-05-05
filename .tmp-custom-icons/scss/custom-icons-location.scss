@@ -1,0 +1,43 @@
+@font-face {
+  font-family: "custom-icons-location";
+  src: url('../assets/fonts/custom-icons-location.eot');
+  src: url('../assets/fonts/custom-icons-location.eot?#iefix') format('eot'),
+  url('../assets/fonts/custom-icons-location.woff2') format('woff2'),
+  url('../assets/fonts/custom-icons-location.woff') format('woff'),
+  url('../assets/fonts/custom-icons-location.ttf') format('truetype'),
+  url('../assets/fonts/custom-icons-location.svg#custom-icons-location') format('svg');
+}
+
+%location {
+  font-family: "custom-icons-location";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@function location-char($filename) {
+  $char: "";
+  
+    @if $filename == add-location {
+      $char: "\EA01";
+    }
+  
+  @return $char;
+}
+
+@mixin location($filename) {
+  &:before {
+    @extend %location;
+    content: location-char($filename);
+  }
+}
+
+
+  custom-icon.set-location.icon-add-location {
+    @include location(add-location);
+  }
+
