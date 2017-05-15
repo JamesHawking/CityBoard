@@ -21,7 +21,7 @@ export class HomePage implements OnInit {
 
   constructor(public af: AngularFire, public events: Events, public navCtrl: NavController, public postService: PostService, public loadingCtrl: LoadingController, public popoverCtrl: PopoverController) {
 
-    this.slabs = af.database.list('/slabs');
+    this.slabs = af.database.list('/slabs').map((array) => array.reverse()) as FirebaseListObservable<any[]>;
 
     // this.slabs.subscribe(slabs => JSON.parse(slabs))
   }
