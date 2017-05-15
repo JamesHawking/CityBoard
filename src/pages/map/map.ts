@@ -32,62 +32,62 @@ declare var google;
 })
 export class MapPage {
  
- @ViewChild('map') mapElement: ElementRef;
-  map: any;
+//  @ViewChild('map') mapElement: ElementRef;
+//   map: any;
  
-  constructor(public navCtrl: NavController, public geolocation: Geolocation) {
+//   constructor(public navCtrl: NavController, public geolocation: Geolocation) {
  
-  }
+//   }
  
-  ionViewDidLoad(){
-    this.loadMap();
-  }
+//   ionViewDidLoad(){
+//     this.loadMap();
+//   }
  
-  loadMap(){
+//   loadMap(){
  
-    this.geolocation.getCurrentPosition().then((position) => {
-      console.log(position.coords.latitude, position.coords.longitude)
-      let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+//     this.geolocation.getCurrentPosition().then((position) => {
+//       console.log(position.coords.latitude, position.coords.longitude)
+//       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
  
-      let mapOptions = {
-        center: latLng,
-        zoom: 15,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      }
+//       let mapOptions = {
+//         center: latLng,
+//         zoom: 15,
+//         mapTypeId: google.maps.MapTypeId.ROADMAP
+//       }
  
-      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+//       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
  
-    }, (err) => {
-      console.log(err);
-    });
+//     }, (err) => {
+//       console.log(err);
+//     });
  
-  }
+//   }
 
-  addMarker(){
+//   addMarker(){
  
-  let marker = new google.maps.Marker({
-    map: this.map,
-    animation: google.maps.Animation.DROP,
-    position: this.map.getCenter()
-  });
+//   let marker = new google.maps.Marker({
+//     map: this.map,
+//     animation: google.maps.Animation.DROP,
+//     position: this.map.getCenter()
+//   });
  
-  let content = "<h4>Information!</h4>";          
+//   let content = "<h4>Information!</h4>";          
  
-  this.addInfoWindow(marker, content);
+//   this.addInfoWindow(marker, content);
  
-}
+// }
 
-addInfoWindow(marker, content){
+// addInfoWindow(marker, content){
  
-  let infoWindow = new google.maps.InfoWindow({
-    content: content
-  });
+//   let infoWindow = new google.maps.InfoWindow({
+//     content: content
+//   });
  
-  google.maps.event.addListener(marker, 'click', () => {
-    infoWindow.open(this.map, marker);
-  });
+//   google.maps.event.addListener(marker, 'click', () => {
+//     infoWindow.open(this.map, marker);
+//   });
  
-}
+// }
 
 //KOD DRUGI ---->
 
@@ -133,57 +133,57 @@ addInfoWindow(marker, content){
 
     // KOD TRZECI ---->
 
-//      constructor(private googleMaps: GoogleMaps) {}
+     constructor(private googleMaps: GoogleMaps) {}
 
-// // Load map only after view is initialized
-// ngAfterViewInit() {
-//  this.loadMap();
-// }
+// Load map only after view is initialized
+ngAfterViewInit() {
+ this.loadMap();
+}
 
-// loadMap() {
-//  // make sure to create following structure in your view.html file
-//  // and add a height (for example 100%) to it, else the map won't be visible
-//  // <ion-content>
-//  //  <div #map id="map" style="height:100%;"></div>
-//  // </ion-content>
+loadMap() {
+ // make sure to create following structure in your view.html file
+ // and add a height (for example 100%) to it, else the map won't be visible
+ // <ion-content>
+ //  <div #map id="map" style="height:100%;"></div>
+ // </ion-content>
 
-//  // create a new map by passing HTMLElement
-//  let element: HTMLElement = document.getElementById('map');
+ // create a new map by passing HTMLElement
+ let element: HTMLElement = document.getElementById('map');
 
-//  let map: GoogleMap = this.googleMaps.create(element);
+ let map: GoogleMap = this.googleMaps.create(element);
 
-//  // listen to MAP_READY event
-//  // You must wait for this event to fire before adding something to the map or modifying it in anyway
-//  map.one(GoogleMapsEvent.MAP_READY).then(
-//    () => {
-//      console.log('Map is ready!');
-//      // Now you can add elements to the map like the marker
-//    }
-//  );
+ // listen to MAP_READY event
+ // You must wait for this event to fire before adding something to the map or modifying it in anyway
+ map.one(GoogleMapsEvent.MAP_READY).then(
+   () => {
+     console.log('Map is ready!');
+     // Now you can add elements to the map like the marker
+   }
+ );
 
-//  // create LatLng object
-//  let ionic: LatLng = new LatLng(43.0741904,-89.3809802);
+ // create LatLng object
+ let ionic: LatLng = new LatLng(43.0741904,-89.3809802);
 
-//  // create CameraPosition
-//  let position: CameraPosition = {
-//    target: ionic,
-//    zoom: 18,
-//    tilt: 30
-//  };
+ // create CameraPosition
+ let position: CameraPosition = {
+   target: ionic,
+   zoom: 18,
+   tilt: 30
+ };
 
-//  // move the map's camera to position
-//  map.moveCamera(position);
+ // move the map's camera to position
+ map.moveCamera(position);
 
-//  // create new marker
-//  let markerOptions: MarkerOptions = {
-//    position: ionic,
-//    title: 'Ionic'
-//  };
+ // create new marker
+ let markerOptions: MarkerOptions = {
+   position: ionic,
+   title: 'Ionic'
+ };
 
-//  let marker: any = map.addMarker(markerOptions)
-//    .then((marker: any) => {
-//       marker.showInfoWindow();
-//     });
-//  }
+ let marker: any = map.addMarker(markerOptions)
+   .then((marker: any) => {
+      marker.showInfoWindow();
+    });
+ }
 
 }
