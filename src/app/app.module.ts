@@ -8,7 +8,7 @@ import { AngularFireModule } from 'angularfire2';
 import { PostModule } from '../pages/post/post.module';
 
 import { AddSlabForm } from '../pages/addSlabForm/addSlabForm';
-import { ContactPage } from '../pages/contact/contact';
+import { MapPage } from '../pages/map/map';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -22,6 +22,7 @@ import { AuthService } from '../providers/auth-service';
  import { Geolocation } from '@ionic-native/geolocation';
 
  import { CustomIconsModule } from 'ionic2-custom-icons';
+import { PopOverControlls } from '../pages/pop-over-controlls/pop-over-controlls';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCYSOZSBgcFZQLkEm9YwgJCcBu2nV61fKM",
@@ -35,9 +36,10 @@ export const firebaseConfig = {
   declarations: [
     MyApp,
     AddSlabForm,
-    ContactPage,
+    MapPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    PopOverControlls
   ],
   imports: [
     BrowserModule,
@@ -50,9 +52,10 @@ export const firebaseConfig = {
   entryComponents: [
     MyApp,
     AddSlabForm,
-    ContactPage,
+    MapPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    PopOverControlls
   ],
   providers: [
     StatusBar,

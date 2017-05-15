@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { Component, OnInit  } from '@angular/core';
+import { NavController, PopoverController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
@@ -7,7 +7,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { PostService } from '../../app/post/post.service';
 import { Post } from '../../app/post/post.model';
 import { PostPage } from '../post/post';
-
+// import { PopOverControlls } from '../pop-over-controlls/pop-over-controlls';
 
 @Component({
   selector: 'page-home',
@@ -19,12 +19,13 @@ export class HomePage implements OnInit {
   goToPost = PostPage;
   clickedPost: Post;
 
-  constructor(public af: AngularFire, public events: Events, public navCtrl: NavController, public postService: PostService, public loadingCtrl: LoadingController) {
+  constructor(public af: AngularFire, public events: Events, public navCtrl: NavController, public postService: PostService, public loadingCtrl: LoadingController, public popoverCtrl: PopoverController) {
 
-     this.slabs = af.database.list('/slabs');
+    this.slabs = af.database.list('/slabs');
 
     // this.slabs.subscribe(slabs => JSON.parse(slabs))
   }
+
 
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
@@ -36,9 +37,9 @@ export class HomePage implements OnInit {
   }
 
   loadSinglePost(key: string) {
-  //  console.log(key)
+    //  console.log(key)
     this.events.publish('post:view', key);
-    this.navCtrl.push(PostPage, {key: key});
+    this.navCtrl.push(PostPage, { key: key });
   }
 
   // getPosts(): void {
@@ -47,8 +48,8 @@ export class HomePage implements OnInit {
 
 
   ngOnInit() {
- // this.presentLoadingDefault();
- // this.postService.getPosts().then(posts => this.posts = posts);
+    // this.presentLoadingDefault();
+    // this.postService.getPosts().then(posts => this.posts = posts);
     // this.postService.getPostsSlowly().then(posts => this.posts = posts).then(() => this.loading = false);
 
 
@@ -56,10 +57,10 @@ export class HomePage implements OnInit {
 
 
   ionViewDidLoad() {
-   // console.log('ionViewDidLoad PostPage');
+    // console.log('ionViewDidLoad PostPage');
   }
 
-   
+
 }
 
 

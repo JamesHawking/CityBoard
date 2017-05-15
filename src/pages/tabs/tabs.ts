@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { AddSlabForm } from '../addSlabForm/addSlabForm';
-import { ContactPage } from '../contact/contact';
+import { MapPage } from '../map/map';
 import { HomePage } from '../home/home';
 import { PostPage } from '../post/post';
 
@@ -12,7 +12,7 @@ export class TabsPage {
 
   tab1Root = HomePage;
   tab2Root = AddSlabForm;
-  tab3Root = ContactPage;
+  tab3Root = MapPage;
   tab4Root = PostPage;
 
   constructor() {
