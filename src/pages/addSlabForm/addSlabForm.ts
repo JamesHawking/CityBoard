@@ -5,7 +5,6 @@ import { AngularFire, FirebaseListObservable, AngularFireDatabase } from 'angula
 import { AuthService } from '../../providers/auth-service';
 
 import { Geolocation } from '@ionic-native/geolocation';
-
 @Component({
   selector: 'page-addSlabForm',
   templateUrl: 'addSlabForm.html'

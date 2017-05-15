@@ -27,10 +27,11 @@
   </ion-item>
 
   <ion-item>
-    <ion-label  color="primary" floating>Image</ion-label>
+    <img [src]="base64Image" *ngIf="base64Image" />
     <ion-input type="text" [(ngModel)]="slab.img_url" name="img_url"></ion-input>
   </ion-item>
   <button  class='lower' type="submit" ion-button full>Add</button>
+
 </form>
 
 </ion-content>
