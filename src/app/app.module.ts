@@ -20,6 +20,7 @@ import { AuthService } from '../providers/auth-service';
 
  import { GoogleMaps } from '@ionic-native/google-maps';
  import { Geolocation } from '@ionic-native/geolocation';
+ import { Camera } from '@ionic-native/camera';
 
  import { CustomIconsModule } from 'ionic2-custom-icons';
 import { PopOverControlls } from '../pages/pop-over-controlls/pop-over-controlls';
@@ -64,6 +65,7 @@ export const firebaseConfig = {
     GoogleMaps,
     Geolocation,
     SplashScreen,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
