@@ -41,7 +41,7 @@
 <ion-icon item-right (click)="presentPopover()" name="more"></ion-icon>
   </ion-item>
 
- 
+
   <!--<ion-slide style="background-color: green">
     <h2>Slide 1</h2>
   </ion-slide>-->
@@ -51,9 +51,10 @@
 
     <ion-card-content>
       <ion-card-title color="{{slab.color}}">
-       {{slab.title}}   
+       {{slab.title}}
       </ion-card-title>
       <p> {{slab.description}} </p>
+      <p> {{distance}} </p>
     </ion-card-content>
 
     <ion-row no-padding>
@@ -66,7 +67,7 @@
       <ion-col text-center>
         <button ion-button icon-left clear small>
         <ion-icon name="text"></ion-icon>
-        <div>4 Comments</div>
+        <div>{{slab.coords.latitude}}</div>
       </button>
       </ion-col>
       <ion-col text-right>
@@ -81,5 +82,3 @@
 
 
 </ion-content>
-
-
