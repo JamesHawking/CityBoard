@@ -47,20 +47,19 @@ export class MapPage {
   markers: any = [];
 
 neighborhoods = [
-        {lat: 54.5329, lng: 18.5165},
-        {lat: 54.5331, lng: 18.5163},
-        {lat: 54.5334, lng: 18.5161},
-        {lat: 54.5337, lng: 18.5159},
-        {lat: 54.5341, lng: 18.5152},
-        {lat: 54.5348, lng: 18.5162},
-        {lat: 54.5341, lng: 18.5171}
+        {lat: 54.5329, lng: 18.5166, desc: 'Wszędzie leżą śmieci!'},
+        {lat: 54.5332, lng: 18.5150, desc: 'Morze wylało - powódź!'},
+        {lat: 54.5337, lng: 18.5134, desc: 'Dach stoczni przecieka!'},
+        {lat: 54.5347, lng: 18.5107, desc: 'Wypadek samochodowy!'},
+        {lat: 54.5349, lng: 18.5271, desc: 'Tu śpi uczestnik hackathonu!'},
+        {lat: 54.5307, lng: 18.5182, desc: 'Cisza, spokój, nic się nie dzieje.'},
+        {lat: 54.5303, lng: 18.5104, desc: 'Drzewo na torach!'}
       ];
   constructor(public af: AngularFire, private googleMaps: GoogleMaps, public plt: Platform, private geolocation: Geolocation) {
     // hypertrack = (<any>window).cordova.plugins.HyperTrack;
     this.getCurrentLocation();
     this.slabs = af.database.object('/slabs');
-
-
+    this.populateMap();
   }
 
  @ViewChild('map') mapElement: ElementRef;
@@ -89,30 +88,15 @@ neighborhoods = [
   }
 
 populateMap(){
-  // this.slabs.subscribe(slab => {
-  //    // this.addMarker(slab);
-  //    this.addMarkerWithTimeout(slab, 200)
-  //     console.log(slab);
-  //   });
   this.neighborhoods.map(nhdb => {
-     this.addMarker(nhdb.lat, nhdb.lng);
+     this.addMarker(nhdb.lat, nhdb.lng, nhdb.desc);
   })
 }
 
-// addMarker(slab){
-//  let marker = new google.maps.Marker({
-//     map: this.map,
-//     animation: google.maps.Animation.DROP,
-//     position: {lat: slab.coords.lat, lng: slab.coords.lng}
-//   });
-
-//  let cnt = `<h4>${slab.title}</h4>`;          
-
-//  this.addInfoWindow(marker, cnt);
-// }
 
 
-addMarker(lat: number, lng: number): void {
+
+addMarker(lat: number, lng: number, desc: string): void {
 
     let latLng = new google.maps.LatLng(lat, lng);
 
@@ -124,6 +108,7 @@ addMarker(lat: number, lng: number): void {
     });
 
     this.markers.push(marker);
+    this.addInfoWindow(marker, desc);
 
   }
 
@@ -137,54 +122,6 @@ addInfoWindow(marker, cnt){
   });
 
 }
-
-
-
-  // loadMap() {
-  //   // make sure to create following structure in your view.html file
-  //   // and add a height (for example 100%) to it, else the map won't be visible
-  //   // <ion-content>
-  //   //  <div #map id="map" style="height:100%;"></div>
-  //   // </ion-content>
-
-  //   // create a new map by passing HTMLElement
-  //   let element: HTMLElement = document.getElementById('map');
-
-  //   let map: GoogleMap = this.googleMaps.create(element);
-
-  //   // listen to MAP_READY event
-  //   // You must wait for this event to fire before adding something to the map or modifying it in anyway
-  //   map.one(GoogleMapsEvent.MAP_READY).then(
-  //     () => {
-  //       console.log('Map is ready!');
-  //       // Now you can add elements to the map like the marker
-  //     }
-  //   );
-
-  //   // create LatLng object
-  //   let ionic: LatLng = new LatLng(this.lat, this.lng);
-
-  //   // create CameraPosition
-  //   let position: CameraPosition = {
-  //     target: ionic,
-  //     zoom: 18,
-  //     tilt: 30
-  //   };
-
-  //   // move the map's camera to position
-  //   map.moveCamera(position);
-
-  //   // create new marker
-  //   let markerOptions: MarkerOptions = {
-  //     position: ionic,
-  //     title: 'Ionic'
-  //   };
-
-  //   let marker: any = map.addMarker(markerOptions)
-  //     .then((marker: Marker) => {
-  //       marker.showInfoWindow();
-  //     });
-  // }
 
   click() {
     if (typeof cordova !== 'undefined') {

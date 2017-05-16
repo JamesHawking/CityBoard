@@ -26,7 +26,7 @@ import { AuthService } from '../providers/auth-service';
  import { HttpModule }    from '@angular/http';
 import { PopOverControlls } from '../pages/pop-over-controlls/pop-over-controlls';
 import { HypertrackProvider } from '../providers/hypertrack/hypertrack';
-
+import { Camera } from '@ionic-native/camera';
 export const firebaseConfig = {
   apiKey: "AIzaSyCYSOZSBgcFZQLkEm9YwgJCcBu2nV61fKM",
   authDomain: "cityboard-31d6b.firebaseapp.com",
@@ -68,6 +68,7 @@ export const firebaseConfig = {
     PostService,
     AuthService,
     GoogleMaps,
+    Camera,
     Geolocation,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}, HypertrackProvider

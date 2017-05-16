@@ -22,8 +22,8 @@ export class PostPage implements OnInit {
   slab: FirebaseObjectObservable<any>;
   item = {
     coords: {
-      latitude: 0,
-      longitude: 0
+      lat: 0,
+      lng: 0
     }
   };
 
@@ -46,7 +46,7 @@ export class PostPage implements OnInit {
   loadMap() {
 
     this.geolocation.getCurrentPosition().then((position) => {
-      let latLng = new google.maps.LatLng(this.item.coords.latitude, this.item.coords.longitude);
+      let latLng = new google.maps.LatLng(this.item.coords.lat, this.item.coords.lng);
 
       let mapOptions = {
         center: latLng,
