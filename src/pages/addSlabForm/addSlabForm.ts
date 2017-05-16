@@ -19,7 +19,7 @@ export class AddSlabForm {
     this.items = af.database.list('/slabs');
 
     this.geolocation.getCurrentPosition().then((position) => {
-       this.coords = { latitude: position.coords.latitude, longitude: position.coords.longitude }
+       this.coords = { lat: position.coords.latitude, lng: position.coords.longitude }
         console.log(position.coords.latitude, position.coords.longitude)}, (err) => {
         console.log(err);
     });
@@ -39,10 +39,18 @@ export class AddSlabForm {
      let key = this.items.push(slab.value).key;
       //console.log(slab.value);
       this.updateCoords(key, this.coords);
+      this.updateStatus(key, 'Uncompleted');
      //console.log(slab.value);
     }
 
     updateCoords(key: string, coords: object) {
        this.items.update(key, { coords: coords });
+    }
+    updateStatus(key: string, status: string) {
+       this.items.update(key, { status: status });
+    }
+
+    callHT(){
+      
     }
 }

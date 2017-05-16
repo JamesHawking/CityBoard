@@ -37,7 +37,9 @@
         "cordova-android": "^6.2.3",
         "cordova-plugin-console": "~1.0.5",
         "cordova-plugin-device": "~1.1.4",
+        "cordova-plugin-geolocation": "~2.4.3",
         "cordova-plugin-googlemaps": "~1.4.0",
+        "cordova-plugin-hypertrack": "^1.1.0",
         "cordova-plugin-splashscreen": "~4.0.1",
         "cordova-plugin-statusbar": "~2.2.1",
         "cordova-plugin-whitelist": "~1.3.1",
@@ -77,16 +79,18 @@
         "plugins": {
             "cordova-plugin-console": {},
             "cordova-plugin-device": {},
-            "cordova-plugin-googlemaps": {
-                "API_KEY_FOR_ANDROID": "AIzaSyDpPxurLk76JiL3Dlrt76fH4Us4DhB8YyY",
-                "API_KEY_FOR_IOS": "AIzaSyAgTa-tCC0xQ6g_tuV7YY7IfZHN1eaG4oM",
-                "NSLOCATIONWHENINUSEUSAGEDESCRIPTION": "Show your location on the map",
-                "NSLOCATIONALWAYSUSAGEDESCRIPTION": "Trace your location on the map"
-            },
             "cordova-plugin-splashscreen": {},
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
-            "ionic-plugin-keyboard": {}
+            "ionic-plugin-keyboard": {},
+            "cordova-plugin-geolocation": {},
+            "cordova-plugin-hypertrack": {},
+            "cordova-plugin-googlemaps": {
+                "API_KEY_FOR_ANDROID": "AIzaSyA7uFzdkqEmY3AwP2byXnD9Rs2v8mw8Ves",
+                "API_KEY_FOR_IOS": "AIzaSyD9o3zwK4bj5P64vrgFVdlWGEPKeHR39Q0",
+                "NSLOCATIONWHENINUSEUSAGEDESCRIPTION": "Show your location on the map",
+                "NSLOCATIONALWAYSUSAGEDESCRIPTION": "Trace your location on the map"
+            }
         },
         "platforms": [
             "android"

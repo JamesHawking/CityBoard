@@ -8,7 +8,6 @@ import { PostService } from '../../app/post/post.service';
 import { Post } from '../../app/post/post.model';
 import { PostPage } from '../post/post';
 // import { PopOverControlls } from '../pop-over-controlls/pop-over-controlls';
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -51,7 +50,6 @@ export class HomePage implements OnInit {
     // this.presentLoadingDefault();
     // this.postService.getPosts().then(posts => this.posts = posts);
     // this.postService.getPostsSlowly().then(posts => this.posts = posts).then(() => this.loading = false);
-
 
   }
 
