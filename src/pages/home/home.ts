@@ -33,13 +33,18 @@ export class HomePage implements OnInit {
     // this.slabs.subscribe(slabs => JSON.parse(slabs))
   }
 
-
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
     this.slabs2.subscribe(snapshot => {
       console.log(snapshot.key)
       console.log(snapshot.val())
+      for (var key in snapshot) {
+        if (snapshot.hasOwnProperty(key)) {
+          console.log(key + " -> " + snapshot[key]);
+        }
+}
     });
+
     setTimeout(() => {
       console.log('Async operation has ended');
       console.log(this.coordX);
@@ -52,7 +57,6 @@ export class HomePage implements OnInit {
     //  console.log(key)
     this.events.publish('post:view', key);
     this.navCtrl.push(PostPage, { key: key });
-
   }
 
   // getPosts(): void {
