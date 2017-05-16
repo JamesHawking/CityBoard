@@ -47,13 +47,13 @@ export class MapPage {
   markers: any = [];
 
 neighborhoods = [
-        {lat: 54.5329, lng: 18.5165},
-        {lat: 54.5331, lng: 18.5163},
-        {lat: 54.5334, lng: 18.5161},
-        {lat: 54.5337, lng: 18.5159},
-        {lat: 54.5341, lng: 18.5152},
-        {lat: 54.5348, lng: 18.5162},
-        {lat: 54.5341, lng: 18.5171}
+        {lat: 54.5329, lng: 18.5166, desc: 'Wszędzie leżą śmieci!'},
+        {lat: 54.5332, lng: 18.5150, desc: 'Morze wylało - powódź!'},
+        {lat: 54.5337, lng: 18.5134, desc: 'Dach stoczni przecieka!'},
+	      {lat: 54.5347, lng: 18.5107, desc: 'Wypadek samochodowy!'},
+        {lat: 54.5349, lng: 18.5271, desc: 'Tu śpi uczestnik hackathonu!'},
+        {lat: 54.5307, lng: 18.5182, desc: 'Cisza, spokój, nic się nie dzieje.'},
+        {lat: 54.5303, lng: 18.5104, desc: 'Drzewo na torach!'}
       ];
   constructor(public af: AngularFire, private googleMaps: GoogleMaps, public plt: Platform, private geolocation: Geolocation) {
     // hypertrack = (<any>window).cordova.plugins.HyperTrack;
