@@ -120,7 +120,6 @@ addMarker(lat: number, lng: number): void {
       map: this.map,
       animation: google.maps.Animation.DROP,
       position: latLng,
-      icon: 'assets/favicon.ico'
       //icon: this.icons[feature].icon    //Doesn't do anything
     });
 
