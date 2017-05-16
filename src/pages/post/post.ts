@@ -11,6 +11,7 @@ import { Geolocation } from '@ionic-native/geolocation';
  */
 
 declare var google;
+declare var cordova: any;
 
 @IonicPage()
 @Component({
@@ -28,10 +29,9 @@ export class PostPage implements OnInit {
 
   constructor(public af: AngularFire, public events: Events, public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
     let key = navParams.get('key');
-    this.slab = af.database.object('/slabs/' + key,  { preserveSnapshot: true });
+    this.slab = af.database.object('/slabs/' + key, { preserveSnapshot: true });
     this.slab.subscribe(snapshot => {
       this.item = snapshot.val();
-      console.log(snapshot.val())
     });
   }
 
@@ -39,14 +39,13 @@ export class PostPage implements OnInit {
   map: any;
 
 
-  ionViewDidLoad(){
+  ionViewDidLoad() {
     this.loadMap();
   }
 
-  loadMap(){
+  loadMap() {
 
     this.geolocation.getCurrentPosition().then((position) => {
-      console.log(position.coords.latitude, position.coords.longitude)
       let latLng = new google.maps.LatLng(this.item.coords.latitude, this.item.coords.longitude);
 
       let mapOptions = {
@@ -63,9 +62,28 @@ export class PostPage implements OnInit {
 
   }
 
+  beginTask() {
+    cordova.plugins.HyperTrack.startTracking((e) => { console.log('success', e) }, (e) => { console.log('error', e) });
 
-  ngOnInit() {
 
   }
+
+  getCurrentLocation() {
+        cordova.plugins.HyperTrack.getCurrentLocation(
+            (e) => {console.log('success', e);
+                    var obj = JSON.parse(e);
+                    console.log(obj.mLatitude + ', ' + obj.mLongitude)},
+            (e) => {console.log('error', e)});
+  }
+
+  completeTask() {
+    cordova.plugins.HyperTrack.stopTracking((e) => { console.log('success', e) }, (e) => { console.log('error', e) })
+  }
+
+  ngOnInit() {
+    this.getCurrentLocation();
+  }
+
+
 
 }
