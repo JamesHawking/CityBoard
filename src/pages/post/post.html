@@ -35,7 +35,7 @@
       </p>
     </ion-card-content>
 
-    <ion-row no-padding>
+    <ion-row *ngIf="item.satus == 'Uncompleted'" no-padding>
       <ion-col>
           <button (click)="beginTask()" ion-button icon-left>
   <ion-icon name="star"></ion-icon>

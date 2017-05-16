@@ -59,7 +59,7 @@ neighborhoods = [
     // hypertrack = (<any>window).cordova.plugins.HyperTrack;
     this.getCurrentLocation();
     this.slabs = af.database.object('/slabs');
-    this.populateMap();
+    
   }
 
  @ViewChild('map') mapElement: ElementRef;
@@ -67,6 +67,7 @@ neighborhoods = [
   // Load map only after view is initialized
   ngAfterViewInit() {
     this.loadMap();
+    
   }
 
   loadMap() {
@@ -80,7 +81,7 @@ neighborhoods = [
       }
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
+      this.populateMap();
     }, (err) => {
       console.log(err);
     });
@@ -104,7 +105,6 @@ addMarker(lat: number, lng: number, desc: string): void {
       map: this.map,
       animation: google.maps.Animation.DROP,
       position: latLng,
-      //icon: this.icons[feature].icon    //Doesn't do anything
     });
 
     this.markers.push(marker);

@@ -1,21 +1,36 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Add something!
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-  <ion-item class="text" *ngFor="let item of items | async">
-    {{item.title}}
+<ion-list>
+  <ion-item>
+    <ion-icon name="camera" item-left></ion-icon>
+      First take a picture!
   </ion-item>
-  </ion-list>
+    <ion-item>
+     <ion-icon name="list" item-left></ion-icon>
+      Add title...
+  </ion-item>
+      <ion-item>
+     <ion-icon name="list" item-left></ion-icon>
+      ...and description!
+  </ion-item>
+    
+      <ion-item>
+       <ion-icon name="logo-android" item-left></ion-icon>
+      Pssst! Remember to click add.
+  </ion-item>
+</ion-list>
+
+  <button (click)="getPic()" ion-button full>Get Pic</button>
+<img [src]="base64Image" *ngIf="base64Image" />
 
  <form #slab="ngForm" (ngSubmit)="addSlab(slab)" novalidate>
-
-
   <ion-item>
     <ion-label  color="primary" floating>Title</ion-label>
     <ion-input type="text" [(ngModel)]="slab.title" name="title"></ion-input>
@@ -30,8 +45,9 @@
     <ion-label  color="primary" floating>Image</ion-label>
     <ion-input type="text" [(ngModel)]="slab.img_url" name="img_url"></ion-input>
   </ion-item>-->
-  <button  class='lower' type="submit" ion-button full>Add</button>
+  <br>
+
+  <button  color="danger" class='lower' type="submit" ion-button full>Add</button>
 </form>
-<button (click)="getPic()" ion-button full>Get Pic</button>
-<img [src]="base64Image" *ngIf="base64Image" />
+
 </ion-content>

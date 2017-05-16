@@ -41,6 +41,7 @@ export class PostPage implements OnInit {
 
   ionViewDidLoad() {
     this.loadMap();
+    
   }
 
   loadMap() {
@@ -55,12 +56,26 @@ export class PostPage implements OnInit {
       }
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
+      this.addMarker(this.item.coords.lat, this.item.coords.lng);
     }, (err) => {
       console.log(err);
     });
 
   }
+
+  addMarker(lat: number, lng: number, desc?: string): void {
+
+    let latLng = new google.maps.LatLng(lat, lng);
+
+    let marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: latLng,
+    });
+
+
+  }
+
 
   beginTask() {
     cordova.plugins.HyperTrack.startTracking((e) => { console.log('success', e) }, (e) => { console.log('error', e) });
@@ -69,11 +84,13 @@ export class PostPage implements OnInit {
   }
 
   getCurrentLocation() {
-        cordova.plugins.HyperTrack.getCurrentLocation(
-            (e) => {console.log('success', e);
-                    var obj = JSON.parse(e);
-                    console.log(obj.mLatitude + ', ' + obj.mLongitude)},
-            (e) => {console.log('error', e)});
+    cordova.plugins.HyperTrack.getCurrentLocation(
+      (e) => {
+        console.log('success', e);
+        var obj = JSON.parse(e);
+        console.log(obj.mLatitude + ', ' + obj.mLongitude)
+      },
+      (e) => { console.log('error', e) });
   }
 
   completeTask() {
