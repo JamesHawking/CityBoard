@@ -30,6 +30,10 @@ import 'rxjs/add/operator/map';
 declare var google;
 declare var cordova: any;
 
+export class Slab {
+  title: any;
+  coords = { lat: Number, lng: Number}
+}
 
 @Component({
   selector: 'page-map',
@@ -40,6 +44,17 @@ export class MapPage {
   lng: any;
   slabs: FirebaseObjectObservable<any[]>;
   slabsArray: FirebaseObjectObservable<any[]>;
+  markers: any = [];
+
+neighborhoods = [
+        {lat: 54.5329, lng: 18.5165},
+        {lat: 54.5331, lng: 18.5163},
+        {lat: 54.5334, lng: 18.5161},
+        {lat: 54.5337, lng: 18.5159},
+        {lat: 54.5341, lng: 18.5152},
+        {lat: 54.5348, lng: 18.5162},
+        {lat: 54.5341, lng: 18.5171}
+      ];
   constructor(public af: AngularFire, private googleMaps: GoogleMaps, public plt: Platform, private geolocation: Geolocation) {
     // hypertrack = (<any>window).cordova.plugins.HyperTrack;
     this.getCurrentLocation();
@@ -56,7 +71,6 @@ export class MapPage {
   }
 
   loadMap() {
-
     this.geolocation.getCurrentPosition().then((position) => {
       let latLng = new google.maps.LatLng(this.lat, this.lng);
 
@@ -75,27 +89,46 @@ export class MapPage {
   }
 
 populateMap(){
-  this.slabs.subscribe(slab => {
-      this.addMarker(slab);
-      console.log(slab);
+  // this.slabs.subscribe(slab => {
+  //    // this.addMarker(slab);
+  //    this.addMarkerWithTimeout(slab, 200)
+  //     console.log(slab);
+  //   });
+  this.neighborhoods.map(nhdb => {
+     this.addMarker(nhdb.lat, nhdb.lng);
+  })
+}
+
+// addMarker(slab){
+//  let marker = new google.maps.Marker({
+//     map: this.map,
+//     animation: google.maps.Animation.DROP,
+//     position: {lat: slab.coords.lat, lng: slab.coords.lng}
+//   });
+
+//  let cnt = `<h4>${slab.title}</h4>`;          
+
+//  this.addInfoWindow(marker, cnt);
+// }
+
+
+addMarker(lat: number, lng: number): void {
+
+    let latLng = new google.maps.LatLng(lat, lng);
+
+    let marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: latLng,
+      icon: 'assets/favicon.ico'
+      //icon: this.icons[feature].icon    //Doesn't do anything
     });
-}
 
-addMarker(slab){
- let marker = new google.maps.Marker({
-    map: this.map,
-    animation: google.maps.Animation.DROP,
-    position: slab.coords
-  });
+    this.markers.push(marker);
 
- let cnt = `<h4>${slab.title}</h4>`;          
-
- this.addInfoWindow(marker, cnt);
-
-}
+  }
 
 addInfoWindow(marker, cnt){
-
  let infoWindow = new google.maps.InfoWindow({
     content: cnt
   });
