@@ -35,6 +35,7 @@
         "@ionic/storage": "2.0.1",
         "angularfire2": "^2.0.0-beta.8",
         "cordova-android": "^6.2.3",
+        "cordova-plugin-camera": "^2.4.1",
         "cordova-plugin-console": "~1.0.5",
         "cordova-plugin-device": "~1.1.4",
         "cordova-plugin-geolocation": "~2.4.3",
@@ -90,6 +91,10 @@
                 "API_KEY_FOR_IOS": "AIzaSyD9o3zwK4bj5P64vrgFVdlWGEPKeHR39Q0",
                 "NSLOCATIONWHENINUSEUSAGEDESCRIPTION": "Show your location on the map",
                 "NSLOCATIONALWAYSUSAGEDESCRIPTION": "Trace your location on the map"
+            },
+            "cordova-plugin-camera": {
+                "CAMERA_USAGE_DESCRIPTION": " ",
+                "PHOTOLIBRARY_USAGE_DESCRIPTION": " "
             }
         },
         "platforms": [
