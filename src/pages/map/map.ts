@@ -30,10 +30,6 @@ import 'rxjs/add/operator/map';
 declare var google;
 declare var cordova: any;
 
-export class Slab {
-  title: any;
-  coords = { lat: Number, lng: Number}
-}
 
 @Component({
   selector: 'page-map',
@@ -47,13 +43,13 @@ export class MapPage {
   markers: any = [];
 
 neighborhoods = [
-        {lat: 54.5329, lng: 18.5166, desc: 'Wszędzie leżą śmieci!'},
-        {lat: 54.5332, lng: 18.5150, desc: 'Morze wylało - powódź!'},
-        {lat: 54.5337, lng: 18.5134, desc: 'Dach stoczni przecieka!'},
-        {lat: 54.5347, lng: 18.5107, desc: 'Wypadek samochodowy!'},
-        {lat: 54.5349, lng: 18.5271, desc: 'Tu śpi uczestnik hackathonu!'},
-        {lat: 54.5307, lng: 18.5182, desc: 'Cisza, spokój, nic się nie dzieje.'},
-        {lat: 54.5303, lng: 18.5104, desc: 'Drzewo na torach!'}
+        {lat: 54.5329, lng: 18.5166, desc: 'Garbage! Garbage everywhere!'},
+        {lat: 54.5332, lng: 18.5150, desc: 'Flood!'},
+        {lat: 54.5337, lng: 18.5134, desc: 'Roof of the Shipyard leaks!'},
+        {lat: 54.5347, lng: 18.5107, desc: 'Car accident!'},
+        {lat: 54.5349, lng: 18.5271, desc: 'Hackathon participant fell asleep here!'},
+        {lat: 54.5307, lng: 18.5182, desc: 'Silence, nothing happens!'},
+        {lat: 54.5303, lng: 18.5104, desc: 'Tree lying on the rails!'}
       ];
   constructor(public af: AngularFire, private googleMaps: GoogleMaps, public plt: Platform, private geolocation: Geolocation) {
     // hypertrack = (<any>window).cordova.plugins.HyperTrack;
@@ -67,7 +63,6 @@ neighborhoods = [
   // Load map only after view is initialized
   ngAfterViewInit() {
     this.loadMap();
-    
   }
 
   loadMap() {
@@ -93,9 +88,6 @@ populateMap(){
      this.addMarker(nhdb.lat, nhdb.lng, nhdb.desc);
   })
 }
-
-
-
 
 addMarker(lat: number, lng: number, desc: string): void {
 

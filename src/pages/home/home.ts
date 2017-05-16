@@ -7,6 +7,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { PostService } from '../../app/post/post.service';
 import { Post } from '../../app/post/post.model';
 import { PostPage } from '../post/post';
+
 // import { PopOverControlls } from '../pop-over-controlls/pop-over-controlls';
 @Component({
   selector: 'page-home',

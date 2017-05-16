@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable, AngularFireDatabase } from 'angularfire2';
 
-
+import { HomePage } from '../home/home';
 import { AuthService } from '../../providers/auth-service';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import * as firebase from 'firebase';
-
+declare var cordova: any;
 @Component({
   selector: 'page-addSlabForm',
   templateUrl: 'addSlabForm.html'
@@ -18,7 +18,10 @@ export class AddSlabForm {
   slab = {
     img_url: ''
   };
-  coords = {};
+  coords = {
+    lat: 0,
+    lng: -122.39550
+  };
   public base64Image: string;
   storagePicsRef: any;
   objectToSave: Array<any> = new Array;
@@ -33,10 +36,7 @@ export class AddSlabForm {
     }, (err) => {
       console.log(err);
     });
-
        this.storagePicsRef = firebase.storage().ref().child('pictures/');
-  
-
   }
 
   getPic() {
@@ -60,7 +60,6 @@ export class AddSlabForm {
   uploadPicture(imgData: any) {
     var randomNumber = Math.floor(Math.random() * 256);
     console.log('Random number : ' + randomNumber);
-
     this.storagePicsRef.child(randomNumber + '.jpg').putString(imgData, 'base64', { contentType: 'image/jpeg' }).then((savedPicture) => {
       console.log('saved picture URL', savedPicture.downloadURL);
       this.picUrl = savedPicture.downloadURL;
@@ -69,22 +68,16 @@ export class AddSlabForm {
       this.storagePicsRef.set(this.objectToSave);
     });
   }
-  // signInWithFacebook(): void {
-  //   this._auth.signInWithFacebook()
-  //     .then(() => this.onSignInSuccess());
-  // }
 
-  // private onSignInSuccess(): void {
-  //   console.log("Facebook display name ",this._auth.displayName());
-  // }
 
   addSlab(slab: any) {
     let key = this.items.push(slab.value).key;
     //console.log(slab.value);
-    this.updateCoords(key, this.coords);
+    this.updateCoords(key, this.coords); 
     this.updateStatus(key, 'Uncompleted');
     this.updatePic(key, this.picUrl);
-    //console.log(slab.value);
+    this.createAction('visit', 123);
+    this.creatPlace();
   }
 
   updateCoords(key: string, coords: object) {
@@ -97,7 +90,17 @@ export class AddSlabForm {
     this.items.update(key, { img_url: url });
   }
 
-  callHT() {
-
-  }
+  createAction(type, lookupId) {
+        console.log('create action')
+         cordova.plugins.HyperTrack.createAndAssignAction(
+            type, lookupId, 'Ferry building, San Francisco', this.coords.lat, this.coords.lng,
+            (e) => {console.log('success', e);
+                    var obj = JSON.parse(e);
+                    console.log('trying to complete', obj.id,  cordova.plugins.HyperTrack.completeAction)
+                     cordova.plugins.HyperTrack.completeAction(obj.id, (e) => {console.log('complete success', e)}, (e) => {console.log('complete error', e)})},
+            (e) => {console.log('error', e)})
+    }
+    creatPlace() {
+      //WITH HYPERTRACK OFC!
+    }
 }

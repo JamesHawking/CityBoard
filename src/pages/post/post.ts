@@ -79,8 +79,6 @@ export class PostPage implements OnInit {
 
   beginTask() {
     cordova.plugins.HyperTrack.startTracking((e) => { console.log('success', e) }, (e) => { console.log('error', e) });
-
-
   }
 
   getCurrentLocation() {

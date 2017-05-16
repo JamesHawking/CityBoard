@@ -12,7 +12,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <preference name="HYPERTRACK_PK" value="pk_f1e7bce1181efd1233c875173d98c96d097dc21e" />
+    <preference name="HYPERTRACK_PK" value="pk_test_522133485b450337481040926db018a3ed202b4f" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
