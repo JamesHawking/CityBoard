@@ -27,6 +27,7 @@
         "@angular/http": "4.0.0",
         "@angular/platform-browser": "4.0.0",
         "@angular/platform-browser-dynamic": "4.0.0",
+        "@ionic-native/camera": "^3.8.0",
         "@ionic-native/core": "^3.6.1",
         "@ionic-native/geolocation": "^3.6.1",
         "@ionic-native/google-maps": "^3.6.1",
