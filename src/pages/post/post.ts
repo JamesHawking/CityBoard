@@ -37,35 +37,35 @@ export class PostPage implements OnInit {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
- 
- 
+
+
   ionViewDidLoad(){
     this.loadMap();
   }
- 
+
   loadMap(){
- 
+
     this.geolocation.getCurrentPosition().then((position) => {
       console.log(position.coords.latitude, position.coords.longitude)
       let latLng = new google.maps.LatLng(this.item.coords.latitude, this.item.coords.longitude);
- 
+
       let mapOptions = {
         center: latLng,
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
- 
+
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
- 
+
     }, (err) => {
       console.log(err);
     });
- 
+
   }
 
 
   ngOnInit() {
 
-  } 
+  }
 
 }

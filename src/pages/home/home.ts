@@ -37,8 +37,13 @@ export class HomePage implements OnInit {
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
     this.slabs2.subscribe(snapshot => {
-      console.log(snapshot.key)
+      console.log(snapshot)
       console.log(snapshot.val())
+      for (var key in snapshot) {
+        if (snapshot.hasOwnProperty(key)) {
+          console.log(key + " -> " + snapshot[key]);
+  }
+}
     });
     setTimeout(() => {
       console.log('Async operation has ended');
