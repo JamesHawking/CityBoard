@@ -15,20 +15,20 @@
 
 <ion-content padding>
 
-<ion-card *ngIf="item">
-  <ion-item color="{{slab.color}}">
-    <ion-avatar item-left>
-      <img src="https://upload.wikimedia.org/wikipedia/en/d/d8/Michael_J._Fox_as_Marty_McFly_in_Back_to_the_Future%2C_1985.jpg">
-    </ion-avatar>
-    <h2>Marty McFly</h2>
-    <p>November 5, 1955</p>
-  </ion-item>
+  <ion-card *ngIf="item">
+    <ion-item color="{{slab.color}}">
+      <ion-avatar item-left>
+        <img src="https://upload.wikimedia.org/wikipedia/en/d/d8/Michael_J._Fox_as_Marty_McFly_in_Back_to_the_Future%2C_1985.jpg">
+      </ion-avatar>
+      <h2>Marty McFly</h2>
+      <p>November 5, 1955</p>
+    </ion-item>
 
-    <img src="{{item.img_url}}"/>
+    <img src="{{item.img_url}}" />
 
     <ion-card-content>
       <ion-card-title color="{{item.color}}">
-       {{item.title}}
+        {{item.title}}
       </ion-card-title>
       <p>
         {{item.description}}
@@ -37,10 +37,10 @@
 
     <ion-row no-padding>
       <ion-col>
-        <button ion-button clear small color="danger" icon-left>
-          <ion-icon name='star'></ion-icon>
-          {{item.upvotes}}
-        </button>
+          <button (click)="beginTask()" ion-button icon-left>
+  <ion-icon name="star"></ion-icon>
+  Begin task!
+</button>
       </ion-col>
       <ion-col text-center>
         <button ion-button icon-left clear small>
@@ -49,17 +49,18 @@
       </button>
       </ion-col>
       <ion-col text-right>
-        <button ion-button clear small color="danger" icon-left>
-          <ion-icon name='share-alt'></ion-icon>
-          Udostępnij
-        </button>
+        <button (click)="stopTracking()" ion-button icon-left>
+        <ion-icon name="star"></ion-icon>
+        Stop task!
+      </button>
       </ion-col>
     </ion-row>
   </ion-card>
 
 
 
-<div #map id="map">
-  </div>  
+
+
+    <div #map id="map"> </div>
 
 </ion-content>

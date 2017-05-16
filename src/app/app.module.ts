@@ -11,6 +11,7 @@ import { AddSlabForm } from '../pages/addSlabForm/addSlabForm';
 import { MapPage } from '../pages/map/map';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,10 +21,11 @@ import { AuthService } from '../providers/auth-service';
 
  import { GoogleMaps } from '@ionic-native/google-maps';
  import { Geolocation } from '@ionic-native/geolocation';
- import { Camera } from '@ionic-native/camera';
 
  import { CustomIconsModule } from 'ionic2-custom-icons';
+ import { HttpModule }    from '@angular/http';
 import { PopOverControlls } from '../pages/pop-over-controlls/pop-over-controlls';
+import { HypertrackProvider } from '../providers/hypertrack/hypertrack';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCYSOZSBgcFZQLkEm9YwgJCcBu2nV61fKM",
@@ -40,10 +42,12 @@ export const firebaseConfig = {
     MapPage,
     HomePage,
     TabsPage,
+    LoginPage,
     PopOverControlls
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     CustomIconsModule,
     AngularFireModule.initializeApp(firebaseConfig),
@@ -56,6 +60,7 @@ export const firebaseConfig = {
     MapPage,
     HomePage,
     TabsPage,
+    LoginPage,
     PopOverControlls
   ],
   providers: [
@@ -65,8 +70,7 @@ export const firebaseConfig = {
     GoogleMaps,
     Geolocation,
     SplashScreen,
-    Camera,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler}, HypertrackProvider
   ]
 })
 export class AppModule {}

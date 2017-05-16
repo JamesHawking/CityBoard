@@ -5,10 +5,18 @@
     </ion-title>
     <ion-buttons end>
       <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
+       <button ion-button (click)="populateMap()"><ion-icon name="add"></ion-icon>PM</button>
     </ion-buttons>  
   </ion-navbar>
 </ion-header>
  
 <ion-content>
-  <div #map id="map"></div>  
+  <button (click)="startTracking()" ion-button round>startTracking</button>
+    <button (click)="stopTracking()" ion-button round>stopTracking</button>
+      <button (click)="getCurrentLocation()" ion-button round>getCurrentLocation</button>
+<button (click)="click()" ion-button round>HT</button>
+<div #map id="map" style="height:100%;"></div>
+
+
+ 
 </ion-content>
